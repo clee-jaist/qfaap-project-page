@@ -93,6 +93,8 @@
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            color: var(--primary-color);
+
         }
 
         .abstract {
@@ -233,17 +235,29 @@
     <section id="abstract">
         <h2>Abstract</h2>
         <div class="abstract">
-            Vision-guided robot grasping methods based on Deep Neural Networks (DNNs) have achieved remarkable success in handling unknown objects, attributable to their powerful generalizability. However, these methods with this generalizability tend to recognize the human hand and its adjacent objects as graspable targets, compromising safety during Human-Robot Interaction (HRI). In this work, we propose the <strong>Quality-focused Active Adversarial Policy (QFAAP)</strong> to solve this problem. Specifically, the first part is the <strong>Adversarial Quality Patch (AQP)</strong>, wherein we design the adversarial quality patch loss and leverage the grasp dataset to optimize a patch with high quality scores. Next, we construct the <strong>Projected Quality Gradient Descent (PQGD)</strong> and integrate it with the AQP, which contains only the hand region within each real-time frame, endowing the AQP with fast adaptability to the human hand shape. Through AQP and PQGD, the hand can be actively adversarial with the surrounding objects, lowering their quality scores. Therefore, further setting the quality score of the hand to zero will reduce the grasping priority of both the hand and its adjacent objects, enabling the robot to grasp other objects away from the hand without emergency stops. We conduct extensive experiments on the datasets and a cobot, showing the effectiveness of QFAAP.
+            Vision-guided robot grasping methods based on Deep Neural Networks (DNNs) have achieved remarkable success in handling unknown objects, attributable to their powerful generalizability. However, these methods with this generalizability tend to recognize the human hand and its adjacent objects as graspable targets, compromising safety during Human-Robot Interaction (HRI). In this work, we propose the <strong style="color: #2c3e50;">Quality-focused Active Adversarial Policy (QFAAP)</strong> to solve this problem. Specifically, the first part is the <strong style="color: #2c3e50;">Adversarial Quality Patch (AQP)</strong>, wherein we design the adversarial quality patch loss and leverage the grasp dataset to optimize a patch with high quality scores. Next, we construct the <strong style="color: #2c3e50;">Projected Quality Gradient Descent (PQGD)</strong> and integrate it with the AQP, which contains only the hand region within each real-time frame, endowing the AQP with fast adaptability to the human hand shape. Through AQP and PQGD, the hand can be actively adversarial with the surrounding objects, lowering their quality scores. Therefore, further setting the quality score of the hand to zero will reduce the grasping priority of both the hand and its adjacent objects, enabling the robot to grasp other objects away from the hand without emergency stops. We conduct extensive experiments on the datasets and a cobot, showing the effectiveness of QFAAP.
+        </div>
+
+<!--        <div class="figure">-->
+<!--            <img src="QFAAP_Pipeline.png" alt="QFAAP Pipeline">-->
+<!--            <p class="caption"><strong>The pipeline of QFAAP:</strong> AQP + hand segmentation → PQGD adaptation → quality map modification → safe grasp selection.</p>-->
+<!--        </div>-->
+    </section>
+
+    <section id="highlights">
+        <h2>Highlights</h2>
+        <div class="abstract">
+            This work explores adversarial attacks from a safety-oriented perspective, leveraging their benign potential to realize <strong style="color: #2c3e50;">safe grasping</strong> in cluttered <strong style="color: #2c3e50;">HRI</strong> scenarios. By designing shape-adaptive, quality score–based benign adversarial examples, our method modifies the grasping sequence to prioritize objects away from the human hand and its vicinity, thereby reducing collision risks without triggering emergency stops. This study provides a <strong style="color: #2c3e50;">new paradigm</strong> for <strong style="color: #2c3e50;">benign adversarial attacks</strong> in real-world robotic grasping and offers practical guidance for the safe deployment of DNN-based grasping systems.
         </div>
 
         <div class="figure">
             <img src="QFAAP_Pipeline.png" alt="QFAAP Pipeline">
-            <p class="caption"><strong>The pipeline of QFAAP:</strong> AQP + hand segmentation → PQGD adaptation → quality map modification → safe grasp selection.</p>
+            <p class="caption">The pipeline of QFAAP:</strong> AQP + hand segmentation → PQGD adaptation → quality map modification → safe grasp selection.</p>
         </div>
     </section>
 
     <section id="results1">
-        <h2>Detection Comparison with First-Group Baselines</h2>
+        <h2>Results - Detection Comparison with First-Group Baselines</h2>
         <div class="video-grid">
             <div class="video-item caption">
                 The first-group baselines including Original (the original grasping model) and Original-SZ (a variant of the grasping model where the quality score of the hand region is set to zero). This experiment demonstrates that our method significantly outperforms these methods in suppressing the highest quality scores (second row of the video).
@@ -257,7 +271,7 @@
     </section>
 
     <section id="results2">
-        <h2>Detection Comparison with Second-Group Baselines</h2>
+        <h2>Results - Detection Comparison with Second-Group Baselines</h2>
         <div class="video-grid">
             <div class="video-item caption">
                 The second-group baselines including Original-DSZ (enhanced version of Original-SZ with the zeroed area dilation) and Original-Decay (enhanced version of Original-DSZ with the distance-based linear decay). Our method also shows better performance than these methods.
@@ -271,7 +285,7 @@
     </section>
 
     <section id="results3">
-        <h2>Grasping Comparison with and without PQGD</h2>
+        <h2>Results - Grasping Comparison with and without PQGD</h2>
         <div class="video-grid">
             <div class="video-item caption">
                 When PQGD is not applied, AQP shows limited effectiveness due to its poor adaptability to variations in hand shape, thus hard to realize safe grasping in human-robot interaction.
@@ -292,7 +306,7 @@
     </section>
 
     <section id="results4">
-        <h2>Grasping in Static and Dynamic Cluttered Scenarios</h2>
+        <h2>Results - Grasping in Static and Dynamic Cluttered Scenarios</h2>
         <div class="video-grid">
             <div class="video-item caption">
                 Our method enables safe grasping in both static cluttered (top) and dynamic cluttered (bottom) scenarios when human hands interact with the robot. Specifically, the human hand can directly act as a source of quality score interference, suppressing the grasp quality scores of nearby objects. This, in turn, alters the grasping priority and guides the robot to grasp other objects that are farther away from the human hands.
